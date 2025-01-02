@@ -3,7 +3,7 @@
 <p> Hi there👋🏽! I am Samuel Hernandez Balderas, a student at the College of Staten Island as a Computer Science major. I am passionate about software development and full-stack development. When I am not glued to my computer all day, you can find me building pc's, reading manga, or self-learning code!
 
 - 🔭 I’m currently working on **my personal portfolio website**
-- 🌱 I’m currently learning **SwiftUI and Tailwind CSS**
+- 🌱 I’m currently learning **NextJS**
 - 💬 Ask me about **AWS, React, and C++**
 
 ##
