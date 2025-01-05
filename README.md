@@ -23,7 +23,8 @@
 
 ### Pinned Projects
 - [Car Wash Simulation](https://github.com/SamuelIVX/CarWashSimulation) - A C++ project that simulates a car wash queue system using OOP principles.  
-- [PokeDex App](https://github.com/SamuelIVX/PokeDex) - An interactive application built with JavaScript and a public API to fetch Pokémon data.  
+- [PokeDex App](https://github.com/SamuelIVX/PokeDex) - An interactive application built with JavaScript and a public API to fetch Pokémon data.
+- [Admin Dashboard]( https://github.com/SamuelIVX/AdminDashboard) - Comprehensive full-stack application built using Next.js 14, showcasing how to create an Admin Dashboard with modern web development practices.
 
 ##
 
