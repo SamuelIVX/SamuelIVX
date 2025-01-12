@@ -25,6 +25,7 @@
 - [Car Wash Simulation](https://github.com/SamuelIVX/CarWashSimulation) - A C++ project that simulates a car wash queue system using OOP principles.  
 - [PokeDex App](https://github.com/SamuelIVX/PokeDex) - An interactive web application that utilizes a Pokémon API to provide users with a fully interactive Pokémon encyclopedia.
 - [Admin Dashboard]( https://github.com/SamuelIVX/AdminDashboard) - Comprehensive full-stack application of an Admin Dashboard built using Next.js
+- [Next.js E-Commerce App] - A full-stack e-commerce application built with Next.js and a headless CMS, providing modern, scalable solutions for online stores.
 ##
 
 ### Contact Me  
