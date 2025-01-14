@@ -34,4 +34,5 @@
 
 ##
 
-![Samuel's GitHub stats](https://github-readme-stats.vercel.app/api?username=SamuelIVX&show_icons=true)
+<img alt="My Stats" align="left" src="https://github-readme-stats.vercel.app/api?username=SamuelIVX&show_icons=true"/>
+<img alt="Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=SamuelIVX&layout=compact&count=8"/>
