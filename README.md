@@ -32,4 +32,6 @@
 - 📧 Email: [samuel05.hb@gmail.com](mailto:samuel05.hb@gmail.com)  
 - 💼 LinkedIn: [linkedin.com/in/samuelhb](https://www.linkedin.com/in/samuelhb/)
 
-  ##
+##
+
+![Samuel's GitHub stats](https://github-readme-stats.vercel.app/api?username=SamuelIVX&show_icons=true)
