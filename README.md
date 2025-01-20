@@ -4,7 +4,7 @@
 
 - 🔭 I’m currently working on **Next.js and Vite Projects**
 - 🤝 I'm looking to **collaborate!**
-- 👨‍💻 All of my projects are available at https://github.com/SamuelIVX
+- 👨‍💻 All of my projects are available at **[https://github.com/SamuelIVX](https://github.com/SamuelIVX?tab=repositories)**
 - 🌱 I’m currently learning **Next.js**
 - 💬 Ask me about **| AWS | React | C++ |**
 
