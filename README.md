@@ -2,11 +2,11 @@
 ## Samuel Hernandez Balderas
 <p> Hi there👋🏽! I am Samuel Hernandez Balderas, a student at the College of Staten Island as a Computer Science major. I am passionate about software development and full-stack development. When I am not glued to my computer all day, you can find me building pc's, reading manga, playing videogames, or self-learning code!
 
-- 🔭 I’m currently working on **Next.js and Vite Projects**
+- 🔭 I’m currently working on **Full-Stack Web Applications**
 - 🤝 I'm looking to **collaborate!**
 - 👨‍💻 All of my projects are available at **[https://github.com/SamuelIVX](https://github.com/SamuelIVX?tab=repositories)**
 - 🌱 I’m currently learning **Next.js**
-- 💬 Ask me about **| AWS | React | C++ |**
+- 💬 Ask me about **| AWS | React | C++ | Git |**
 
 ##
 
