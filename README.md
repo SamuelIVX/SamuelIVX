@@ -1,6 +1,6 @@
 ![](https://github.com/SamuelIVX/SamuelIVX/blob/main/GIF.gif)
 ## Samuel Hernandez Balderas
-<p> Hi there👋🏽! I am Samuel Hernandez Balderas, a a Computer Science major at the College of Staten Island. I am passionate about software development and full-stack development. When I am not glued to my computer all day, you can find me building pc's, reading manga, playing videogames, or self-learning code!
+<p> Hi there👋🏽! I am Samuel Hernandez Balderas, a a Computer Science major at the College of Staten Island. I am passionate about software engineering and full-stack development. When I am not glued to my computer all day, you can find me building pc's, reading manga, playing videogames, or self-learning code!
 
 - 🔭 I’m currently working on **Full-Stack Web Applications**
 - 🤝 I'm looking to **collaborate!**
