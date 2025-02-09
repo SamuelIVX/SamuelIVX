@@ -4,7 +4,6 @@
 
 - 🔭 I’m currently working on **Full-Stack Web Applications**
 - 🤝 I'm looking to **collaborate!**
-- 👨‍💻 All of my projects are available at **[https://github.com/SamuelIVX](https://github.com/SamuelIVX?tab=repositories)**
 - 🌱 I’m currently learning **Next.js**
 - 💬 Ask me about **| AWS | React | C++ |**
 
