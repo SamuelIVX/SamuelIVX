@@ -5,6 +5,7 @@
 - 🔭 I’m currently working on **Full-Stack Web Applications**
 - 🤝 I'm looking to **collaborate!**
 - 🌱 I’m currently learning **Next.js**
+- 🥸 I'm currently studying **LeetCode**
 - 💬 Ask me about **| AWS | React | C++ |**
 
 ##
