@@ -2,10 +2,10 @@
 ## Samuel Hernandez Balderas
 <p> Hi there👋🏽! I am Samuel Hernandez Balderas, a Computer Science major at the College of Staten Island. I am passionate about software engineering and full-stack development. When I am not glued to my computer all day, you can find me building pc's, reading manga, playing videogames, or self-learning code!
 
-- 🔭 I’m currently working on **Full-Stack Web Applications**
-- 🤝 I'm looking to **collaborate!**
-- 🌱 I’m currently learning **Next.js**
-- 🥸 I'm currently studying **LeetCode**
+- 🔭 I'm building **Full-Stack Web Applications**
+- 🤝 Open to **collaboration!**
+- 🌱 Diving into **Next.js**
+- 🧠 I'm grinding through **LeetCode** problems right now
 - 💬 Ask me about **| AWS | React | C++ |**
 
 ##
