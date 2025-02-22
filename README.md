@@ -25,7 +25,7 @@
 
 ### Top Projects
 - [Car Wash Simulation](https://github.com/SamuelIVX/car_Wash_Simulation) - A C++ project that simulates a Car Wash utilizing queues based on linked-nodes, OOP principles, and Polymorphism.
-- [Next.js Admin Dashboard Full-Stack Application](https://github.com/SamuelIVX/AdminDashboard) - Comprehensive full-stack application of an Admin Dashboard built using Next.js
+- [Next.js Admin Dashboard Full-Stack Application](https://github.com/SamuelIVX/AdminDashboard) - Comprehensive full-stack application of an Admin Dashboard built using Next.js.
 - [Next.js E-Commerce Full-Stack Application](https://github.com/SamuelIVX/ecommerceWebsite) - A full-stack e-commerce application built with Next.js and a headless CMS [JavaScript SDK from Wix], providing modern, scalable solutions for online stores.
 ##
 
