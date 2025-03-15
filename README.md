@@ -35,6 +35,6 @@
 
 ##
 
-<img alt="My Stats" align="left" src="https://github-readme-stats.vercel.app/api?username=SamuelIVX&show_icons=true"/>
+<img alt="My Stats" src="https://github-readme-stats.vercel.app/api?username=SamuelIVX&show_icons=true"/>
 <img alt="Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=SamuelIVX&layout=compact&count=8"/>
-![](https://leetcard.jacoblin.cool/samuelhb?ext=activity)
+![Leetcode Stats](https://leetcard.jacoblin.cool/samuelhb?theme=dark)
