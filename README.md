@@ -5,7 +5,7 @@
 - 🔭 I'm building **Full-Stack Web Applications**
 - 🤝 Open to **collaboration!**
 - 🌱 Diving into **Next.js**
-- 🧠 I'm grinding through **LeetCode** problems right now
+- 🧠 Currently working through **LeetCode** problems
 - 💬 Ask me about **| AWS | React | C++ |**
 
 ##
