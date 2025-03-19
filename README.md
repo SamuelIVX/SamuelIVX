@@ -35,5 +35,5 @@
 
 ##
 
-<img alt="My Stats" src="https://github-readme-stats.vercel.app/api?username=SamuelIVX&show_icons=true&theme=dark"/> <img alt="Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=SamuelIVX&layout=compact&count=8&theme=dark"/>
-<img alt="LeetCode Stats" src="https://leetcard.jacoblin.cool/samuelhb?theme=dark"/>
+<img alt="My Stats" src="https://github-readme-stats.vercel.app/api?username=SamuelIVX&show_icons=true&theme=dark" height="160"/> <img alt="Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=SamuelIVX&layout=compact&count=8&theme=dark" height="160"/>
+<img alt="LeetCode Stats" src="https://leetcard.jacoblin.cool/samuelhb?theme=dark" height="160"/>
