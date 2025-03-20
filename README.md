@@ -26,5 +26,5 @@
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SamuelIVX&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=false&layout=compact">
 
 ## 🌐 Contact Me:
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/samuelhb/) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:samuel05.hb@gmail.com) 
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/samuelhb/) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:samuel05.hb@gmail.com) 
 
