@@ -20,3 +20,11 @@ jobs:
           base: ""
           plugin_isocalendar: "yes"
           plugin_isocalendar_duration: "full-year"
+          plugin_isocalendar_colors: >
+            [
+              "#e8f1ff",
+              "#b8d4ff",
+              "#8ab8ff",
+              "#5a9cff",
+              "#2e71ff"
+            ]
