@@ -15,7 +15,7 @@
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)   
 
 ## 📊 Stats:
-<img src="https://github-readme-stats.vercel.app/api?username=SamuelIVX&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" height="150"> <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SamuelIVX&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=false&layout=compact">
+<img src="https://github-readme-stats.vercel.app/api?username=SamuelIVX&theme=tokyonight&hide_border=true&include_all_commits=true" height="150"> <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SamuelIVX&theme=tokyonight&hide_border=true&include_all_commits=true&layout=compact">
 
 ## 🌐 Contact Me:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/samuelhb/) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:samuel05.hb@gmail.com) [![Portfolio](https://img.shields.io/badge/Digital%20Portfolio-121212?logo=githubpages&logoColor=white)](https://samuelivx.github.io/)
