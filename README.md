@@ -9,4 +9,4 @@ I'm always eager to <b>learn, collaborate, and take on new challenges that push 
 
 #### 🌐 Let's Connect!
 [<img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-%230E76A8.svg?&style=for-the-badge&logo=LinkedIn&logoColor=white" />](https://linkedin.com/in/samuelhb)
-<img alt="Portfolio" src="https://img.shields.io/badge/Digital%20Portfolio-121212?style=for-the-badge&logo=githubpages&logoColor=white"/>
+[<img alt="Portfolio" src="https://img.shields.io/badge/Digital%20Portfolio-121212?style=for-the-badge&logo=githubpages&logoColor=white"/>](https://samuelivx.github.io/)
