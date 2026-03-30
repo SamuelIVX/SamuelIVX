@@ -1,5 +1,7 @@
 ## Hello World 👋🏽
-I'm [**Samuel**](https://samuelivx.github.io/), a <b>Computer Science</b> major at the College of Staten Island with a passion for <b>software engineering & web development</b>. 
+I'm [**Samuel**](https://samuelivx.github.io/), a ***Computer Science*** major at the College of Staten Island & a minor in ***mathematics.*** 
+
+I have a passion for <b>software engineering & web development</b>. 
 
 I love diving into code, building innovative projects, and constantly expanding my knowledge in technology. 
 
