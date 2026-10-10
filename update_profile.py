@@ -1,3 +1,4 @@
+# Generate the themed profile SVGs, including live stats and colored ASCII art.
 ART_LINES = [
     '<tspan fill="#030213">@</tspan><tspan fill="#020213">@</tspan><tspan fill="#020214">@</tspan><tspan fill="#020214">@</tspan><tspan fill="#020316">@</tspan><tspan fill="#02051d">@</tspan><tspan fill="#020825">@</tspan><tspan fill="#01092a">@</tspan><tspan fill="#010a2c">@</tspan><tspan fill="#01092b">@</tspan><tspan fill="#010928">@</tspan><tspan fill="#010929">@</tspan><tspan fill="#010a2c">@</tspan><tspan fill="#030f39">@</tspan><tspan fill="#04113d">@</tspan><tspan fill="#010b2f">@</tspan><tspan fill="#010827">@</tspan><tspan fill="#020724">@</tspan><tspan fill="#010623">@</tspan><tspan fill="#020724">@</tspan><tspan fill="#020726">@</tspan><tspan fill="#02092a">@</tspan><tspan fill="#020b31">@</tspan><tspan fill="#030d36">@</tspan><tspan fill="#030e3a">@</tspan><tspan fill="#030f3b">@</tspan><tspan fill="#030f3b">@</tspan><tspan fill="#020e39">@</tspan><tspan fill="#020c36">@</tspan><tspan fill="#020a30">@</tspan><tspan fill="#020725">@</tspan><tspan fill="#02041b">@</tspan><tspan fill="#020316">@</tspan><tspan fill="#020214">@</tspan><tspan fill="#020214">@</tspan><tspan fill="#020214">@</tspan><tspan fill="#020215">@</tspan><tspan fill="#020317">@</tspan><tspan fill="#02031b">@</tspan><tspan fill="#02031c">@</tspan><tspan fill="#02041c">@</tspan><tspan fill="#020319">@</tspan><tspan fill="#020215">@</tspan><tspan fill="#030213">@</tspan><tspan fill="#030213">@</tspan><tspan fill="#030213">@</tspan><tspan fill="#030213">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan>',
     '<tspan fill="#020214">@</tspan><tspan fill="#020214">@</tspan><tspan fill="#030214">@</tspan><tspan fill="#010214">@</tspan><tspan fill="#020317">@</tspan><tspan fill="#02051f">@</tspan><tspan fill="#02082a">@</tspan><tspan fill="#020b32">@</tspan><tspan fill="#020d39">@</tspan><tspan fill="#020f3c">@</tspan><tspan fill="#010f3d">@</tspan><tspan fill="#02103c">@</tspan><tspan fill="#02103e">@</tspan><tspan fill="#031242">@</tspan><tspan fill="#021140">@</tspan><tspan fill="#010e37">@</tspan><tspan fill="#010a2d">@</tspan><tspan fill="#030a2e">@</tspan><tspan fill="#040a2d">@</tspan><tspan fill="#020827">@</tspan><tspan fill="#02092a">@</tspan><tspan fill="#020b2f">@</tspan><tspan fill="#020e38">@</tspan><tspan fill="#031141">@</tspan><tspan fill="#041449">@</tspan><tspan fill="#04164e">@</tspan><tspan fill="#041751">@</tspan><tspan fill="#031650">@</tspan><tspan fill="#03154c">@</tspan><tspan fill="#031144">@</tspan><tspan fill="#020d37">@</tspan><tspan fill="#010829">@</tspan><tspan fill="#02051f">@</tspan><tspan fill="#010317">@</tspan><tspan fill="#010215">@</tspan><tspan fill="#020214">@</tspan><tspan fill="#020317">@</tspan><tspan fill="#02041d">@</tspan><tspan fill="#020623">@</tspan><tspan fill="#020625">@</tspan><tspan fill="#020624">@</tspan><tspan fill="#010520">@</tspan><tspan fill="#010319">@</tspan><tspan fill="#020214">@</tspan><tspan fill="#030214">@</tspan><tspan fill="#030213">@</tspan><tspan fill="#030214">@</tspan><tspan fill="#030213">@</tspan><tspan fill="#030213">@</tspan><tspan fill="#030213">@</tspan><tspan fill="#030213">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030213">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030213">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan><tspan fill="#030212">@</tspan>',
@@ -68,6 +69,7 @@ import urllib.request
 import calendar
 from datetime import date, datetime, timezone
 import html
+import xml.etree.ElementTree as ET
 
 USER = "SamuelIVX"
 JOINED_YEAR = 2022
@@ -199,17 +201,21 @@ def kv(key, val, width=W):
     dots = "." * max(width - len(key) - len(str(val)) - 3, 1)
     return [(f"{key}: ", "k"), (dots + " ", "d"), (str(val), "v")]
 
-def kv2(k1, v1, k2, v2, width=W):
-    left = kv(k1, v1, 30)
-    return left + [(" | ", "d")] + kv(k2, v2, width - 30 - 3)
+def kv2(k1: str, v1: str, k2: str, v2: str, width: int = W) -> list[tuple[str, str]]:
+    """Format two fields, allowing the left count to outgrow its usual allocation."""
+    # Allow longer repository counts without moving the final value off the edge.
+    left_width = max(30, len(k1) + len(str(v1)) + 4)
+    left = kv(k1, v1, left_width)
+    return left + [(" | ", "d")] + kv(k2, v2, width - left_width - 3)
 
-def loc_line(s, width=W):
+def loc_line(s: dict[str, int], width: int = W) -> list[tuple[str, str]]:
+    """Format net, added, and deleted line counts within the requested row width."""
     k_str = "Lines of Code: "
     val_str = f"{s['loc']:,}"
     add_str = f"{s['loc_add']:,}++"
     del_str = f"{s['loc_del']:,}--"
     
-    total_len = len(k_str) + len(val_str) + 3 + len(add_str) + 2 + len(del_str) + 2
+    total_len = len(k_str) + len(val_str) + 3 + len(add_str) + 2 + len(del_str) + 2 + 1
     dots = "." * max(width - total_len, 1)
     
     return [
@@ -254,24 +260,80 @@ def info_lines(s):
         loc_line(s)
     ]
 
-def render(mode, stats):
+def render(mode: str, stats: dict[str, int]) -> str:
+    """Return a themed SVG with softly faded art left and aligned information right.
+
+    Args:
+        mode: A key in PALETTES.
+        stats: Counts consumed by info_lines.
+    Returns:
+        The standalone SVG markup, ready to embed as a README image.
+    """
     p = PALETTES[mode]
+    padding, gap = 16, 16
+    column_width = (880 - 2 * padding - gap) / 2
+    info_x = 440 + gap / 2
+    lines = info_lines(stats)
+    # Fit the widest row once so every information row keeps the same font size.
+    columns = max(W, *(sum(len(t) for t, _ in row) for row in lines))
+    cell = column_width / columns
+    font_size = cell / 0.6
+    first_y, last_y = padding + font_size, 600 - padding - 4
+    line_height = (last_y - first_y) / (len(lines) - 1)
+    art_columns = max(len("".join(ET.fromstring(f"<text>{line}</text>").itertext()))
+                      for line in ART_LINES)
+    # Cover the entire half proportionally; the viewport crops the outer rows.
+    art_size = max(600 / len(ART_LINES), 440 / (art_columns * 0.6))
+    art_width = art_columns * art_size * 0.6
+    art_x = (440 - art_width) / 2
+    art_y = (600 - len(ART_LINES) * art_size) / 2 + art_size * 0.8
     out = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600" '
-        f'font-family="Consolas, Menlo, monospace" font-size="13px">',
+        f'font-family="Consolas, Menlo, monospace" font-size="{font_size}">',
         f'<rect x="0.5" y="0.5" width="879" height="599" rx="10" fill="{p["bg"]}" stroke="{p["border"]}"/>',
+        '<defs>',
+        '<clipPath id="art-column-clip"><rect width="440" height="600"/></clipPath>',
     ]
+    # Multiply horizontal and vertical fades so corners dissolve into either theme.
+    for axis, inset in (("x", 2), ("y", 1.5)):
+        out.extend([
+            f'<linearGradient id="fade-{axis}" gradientUnits="userSpaceOnUse" '
+            f'x2="{440 if axis == "x" else 0}" y2="{600 if axis == "y" else 0}">',
+            '<stop offset="0" stop-color="black"/>',
+            f'<stop offset="{inset}%" stop-color="white"/>',
+            f'<stop offset="{100 - inset}%" stop-color="white"/>',
+            '<stop offset="1" stop-color="black"/>',
+            '</linearGradient>',
+            f'<mask id="fade-{axis}-mask" maskUnits="userSpaceOnUse" '
+            f'maskContentUnits="userSpaceOnUse" x="0" y="0" width="440" height="600">'
+            f'<rect width="440" height="600" fill="url(#fade-{axis})"/></mask>',
+        ])
+    out.extend(['</defs>', '<g clip-path="url(#art-column-clip)">',
+                '<g mask="url(#fade-y-mask)">', '<g mask="url(#fade-x-mask)">',
+                '<g id="art">'])
     for i, line in enumerate(ART_LINES):
-        out.append(f'<text x="20" y="{40 + i * 9.5}" font-size="9.5px" xml:space="preserve">{line}</text>')
-    for i, segs in enumerate(info_lines(stats)):
+        out.append(f'<text x="{art_x}" y="{art_y + i * art_size}" '
+                   f'font-size="{art_size}" textLength="{art_width}" '
+                   f'lengthAdjust="spacing" xml:space="preserve">{line}</text>')
+    out.extend(['</g>', '</g>', '</g>', '</g>', '<g id="info">'])
+    for i, segs in enumerate(lines):
         if not segs:
             continue
         spans = ""
+        # Each row ends at the same boundary, even when a count needs more digits.
+        row_cell = column_width / sum(len(t) for t, _ in segs)
+        offset = 0
         for t, c in segs:
             fw = ' font-weight="bold"' if c == "k" else ""
-            spans += f'<tspan fill="{p[c]}"{fw}>{html.escape(t)}</tspan>'
-        out.append(f'<text x="410" y="{69 + i * 21}" xml:space="preserve">{spans}</text>')
-    out.append("</svg>")
+            anchor = ' text-anchor="end"' if c == "v" else ""
+            x = info_x + (offset + (len(t) if c == "v" else 0)) * row_cell
+            spans += (f'<tspan x="{x}" fill="{p[c]}"{fw}{anchor} '
+                      f'textLength="{len(t) * row_cell}" lengthAdjust="spacing">'
+                      f'{html.escape(t)}</tspan>')
+            offset += len(t)
+        out.append(f'<text y="{first_y + i * line_height}" '
+                   f'xml:space="preserve">{spans}</text>')
+    out.extend(['</g>', '</svg>'])
     return "\n".join(out)
 
 if __name__ == "__main__":
