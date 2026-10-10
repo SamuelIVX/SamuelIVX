@@ -9,7 +9,10 @@ When I'm not coding, you can find me tinkering with PCs, reading manga or playin
 
 I'm always eager to <b>learn, collaborate, and take on new challenges that push my skills further</b> 🚀.
 
-#### 🌐 Let's Connect!
-[<img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-%230E76A8.svg?&style=for-the-badge&logo=LinkedIn&logoColor=white" />](https://linkedin.com/in/samuelhb)
-[<img alt="Portfolio" src="https://img.shields.io/badge/Digital%20Portfolio-121212?style=for-the-badge&logo=githubpages&logoColor=white"/>](https://samuelivx.github.io/)
-[![Devpost](https://img.shields.io/badge/Devpost-003E54?style=for-the-badge&logo=devpost&logoColor=white)](https://devpost.com/SamuelIVX)
+---
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="dark_mode.svg">
+  <source media="(prefers-color-scheme: light)" srcset="light_mode.svg">
+  <img alt="Samuel's GitHub profile stats" src="dark_mode.svg">
+</picture>
