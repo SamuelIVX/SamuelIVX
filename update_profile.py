@@ -271,8 +271,8 @@ def render(mode: str, stats: dict[str, int]) -> str:
     """
     p = PALETTES[mode]
     padding, gap = 16, 16
-    column_width = (880 - 2 * padding - gap) / 2
-    info_x = 440 + gap / 2
+    column_width = 880 - 352 - padding - gap / 2
+    info_x = 352 + gap / 2
     lines = info_lines(stats)
     # Fit the widest row once so every information row keeps the same font size.
     columns = max(W, *(sum(len(t) for t, _ in row) for row in lines))
@@ -282,31 +282,31 @@ def render(mode: str, stats: dict[str, int]) -> str:
     line_height = (last_y - first_y) / (len(lines) - 1)
     art_columns = max(len("".join(ET.fromstring(f"<text>{line}</text>").itertext()))
                       for line in ART_LINES)
-    # Cover the entire half proportionally; the viewport crops the outer rows.
-    art_size = max(600 / len(ART_LINES), 440 / (art_columns * 0.6))
+    # Cover the left 40% proportionally; the viewport crops the outer columns.
+    art_size = max(600 / len(ART_LINES), 352 / (art_columns * 0.6))
     art_width = art_columns * art_size * 0.6
-    art_x = (440 - art_width) / 2
+    art_x = (352 - art_width) / 2
     art_y = (600 - len(ART_LINES) * art_size) / 2 + art_size * 0.8
     out = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600" '
         f'font-family="Consolas, Menlo, monospace" font-size="{font_size}">',
         f'<rect x="0.5" y="0.5" width="879" height="599" rx="10" fill="{p["bg"]}" stroke="{p["border"]}"/>',
         '<defs>',
-        '<clipPath id="art-column-clip"><rect width="440" height="600"/></clipPath>',
+        '<clipPath id="art-column-clip"><rect width="352" height="600"/></clipPath>',
     ]
     # Multiply horizontal and vertical fades so corners dissolve into either theme.
     for axis, inset in (("x", 2), ("y", 1.5)):
         out.extend([
             f'<linearGradient id="fade-{axis}" gradientUnits="userSpaceOnUse" '
-            f'x2="{440 if axis == "x" else 0}" y2="{600 if axis == "y" else 0}">',
+            f'x2="{352 if axis == "x" else 0}" y2="{600 if axis == "y" else 0}">',
             '<stop offset="0" stop-color="black"/>',
             f'<stop offset="{inset}%" stop-color="white"/>',
             f'<stop offset="{100 - inset}%" stop-color="white"/>',
             '<stop offset="1" stop-color="black"/>',
             '</linearGradient>',
             f'<mask id="fade-{axis}-mask" maskUnits="userSpaceOnUse" '
-            f'maskContentUnits="userSpaceOnUse" x="0" y="0" width="440" height="600">'
-            f'<rect width="440" height="600" fill="url(#fade-{axis})"/></mask>',
+            f'maskContentUnits="userSpaceOnUse" x="0" y="0" width="352" height="600">'
+            f'<rect width="352" height="600" fill="url(#fade-{axis})"/></mask>',
         ])
     out.extend(['</defs>', '<g clip-path="url(#art-column-clip)">',
                 '<g mask="url(#fade-y-mask)">', '<g mask="url(#fade-x-mask)">',

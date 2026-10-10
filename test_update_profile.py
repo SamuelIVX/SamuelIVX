@@ -10,7 +10,7 @@ class ProfileLayoutTests(unittest.TestCase):
     """Exercise the actual renderer without network requests or credentials."""
 
     def test_columns_and_values(self):
-        """Fill the left half with proportional art and align stats on the right."""
+        """Fill the left 40% with proportional art and enlarge the stats column."""
         for mode in profile.PALETTES:
             for value in (0, 1234, 999999999999):
                 with self.subTest(mode=mode, value=value):
@@ -24,18 +24,22 @@ class ProfileLayoutTests(unittest.TestCase):
                     info = root.find("s:g[@id='info']", ns)
                     self.assertIsNotNone(art)
                     self.assertIsNotNone(info)
+                    if value < 10000:
+                        self.assertAlmostEqual(float(root.get("font-size")), 13.125)
                     rows = art.findall("s:text", ns)
                     self.assertEqual(len(rows), len(profile.ART_LINES))
                     for row in rows:
-                        self.assertAlmostEqual(float(row.get("x")), 0)
-                        self.assertAlmostEqual(float(row.get("textLength")), 440)
-                    self.assertLess(float(rows[0].get("y")), 0)
-                    self.assertGreater(float(rows[-1].get("y")), 600)
+                        self.assertLessEqual(float(row.get("x")), 0)
+                        self.assertGreaterEqual(
+                            float(row.get("x")) + float(row.get("textLength")), 352
+                        )
+                    self.assertGreaterEqual(float(rows[0].get("y")), 0)
+                    self.assertLess(float(rows[-1].get("y")), 600)
                     self.assertGreater(float(rows[len(rows) // 2].get("y")), 0)
                     self.assertLess(float(rows[len(rows) // 2].get("y")), 600)
                     self.assertIsNotNone(root.find("s:g[@clip-path='url(#art-column-clip)']", ns))
                     clip = root.find("s:defs/s:clipPath[@id='art-column-clip']/s:rect", ns)
-                    self.assertEqual((clip.get("width"), clip.get("height")), ("440", "600"))
+                    self.assertEqual((clip.get("width"), clip.get("height")), ("352", "600"))
                     for actual, original in zip(rows, profile.ART_LINES):
                         expected = ET.fromstring(f"<text>{original}</text>")
                         self.assertEqual("".join(actual.itertext()), "".join(expected.itertext()))
@@ -44,7 +48,7 @@ class ProfileLayoutTests(unittest.TestCase):
                     for row in info.findall("s:text", ns):
                         self.assertLess(float(row.get("y")), 584)
                         for span in row:
-                            self.assertGreaterEqual(float(span.get("x")), 448)
+                            self.assertGreaterEqual(float(span.get("x")), 360)
                             self.assertLessEqual(float(span.get("x")), 864)
                         text = "".join(row.itertext())
                         if "Stars:" in text or "Followers:" in text:
@@ -74,7 +78,7 @@ class ProfileLayoutTests(unittest.TestCase):
                 mask = root.find(f"s:defs/s:mask[@id='fade-{axis}-mask']", ns)
                 self.assertEqual(mask.get("maskContentUnits"), "userSpaceOnUse")
                 self.assertEqual(mask.get("maskUnits"), "userSpaceOnUse")
-                self.assertEqual((mask.get("width"), mask.get("height")), ("440", "600"))
+                self.assertEqual((mask.get("width"), mask.get("height")), ("352", "600"))
                 self.assertEqual(mask[0].get("fill"), f"url(#fade-{axis})")
 
     def test_line_widths(self):
