@@ -9,24 +9,8 @@ USER = "SamuelIVX"
 JOINED_YEAR = 2022
 W = 68
 
-ART = """
-       .-----------------.
-      /                 /|
-     /                 / |
-    /                 /  |
-   /                 /   |
-  .-----------------.    |
-  |                 |    |
-  |  >_             |    |
-  |                 |    |
-  |                 |   /
-  |                 |  /
-  |                 | /
-  '-----------------'/
-         ||||
-         ||||
-      ___||||___
-"""
+with open(os.path.expanduser("~/Downloads/ascii-art.txt"), "r") as f:
+    ART = f.read()
 
 TOKEN = os.environ.get("GITHUB_TOKEN") or os.environ.get("ACCESS_TOKEN") or ""
 PRIV_TOKEN = os.environ.get("ACCESS_TOKEN") or TOKEN
@@ -170,16 +154,18 @@ def info_lines(s):
         kv("OS", "macOS, Fedora KDE"),
         kv("Education", "BS Computer Science + Math Minor"),
         kv("School", "College of Staten Island"),
-        kv("Role", "Software Engineering Intern"),
+        kv("Role", "SWE, Web Development"),
         kv("IDE", "Cursor, VS Code"),
         [],
         kv("Languages.Programming", "TypeScript, Java, C++, Python"),
         kv("Stack.Web", "Next.js, React, Tailwind, Supabase"),
-        kv("Hobbies", "PC Building, Manga, Gaming"),
+        kv("Stack.Cloud", "AWS (EC2, S3, RDS, Lambda, Athena, SQS, SNS)"),
+        kv("Hobbies", "Gym, PC Building, Manga, Gaming"),
         [],
         rule("Contact"),
         kv("Portfolio", "samuelivx.github.io"),
-        kv("LinkedIn", "in/samuelhernandezcs"),
+        kv("LinkedIn", "in/samuelhb"),
+        kv("Devpost", "devpost.com/samuelhernandezcs"),
         [],
         rule("GitHub Stats"),
         kv2("Repos", f"{s['repos']} {{Contributed: {s['contributed']}}}", "Stars", n(s["stars"])),
@@ -191,12 +177,12 @@ def info_lines(s):
 def render(mode, stats):
     p = PALETTES[mode]
     out = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490" '
+        '<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540" '
         f'font-family="Consolas, Menlo, monospace" font-size="13px">',
-        f'<rect x="0.5" y="0.5" width="879" height="489" rx="10" fill="{p["bg"]}" stroke="{p["border"]}"/>',
+        f'<rect x="0.5" y="0.5" width="879" height="539" rx="10" fill="{p["bg"]}" stroke="{p["border"]}"/>',
     ]
     for i, line in enumerate(ART.strip("\\n").split("\\n")):
-        out.append(f'<text x="25" y="{55 + i * 15}" fill="{p["art"]}" xml:space="preserve">{html.escape(line)}</text>')
+        out.append(f'<text x="20" y="{35 + i * 5}" font-size="5px" fill="{p["art"]}" xml:space="preserve">{html.escape(line)}</text>')
     for i, segs in enumerate(info_lines(stats)):
         if not segs:
             continue
