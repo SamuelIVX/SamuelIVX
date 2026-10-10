@@ -70,6 +70,7 @@ import calendar
 from datetime import date, datetime, timezone
 import html
 import xml.etree.ElementTree as ET
+from profile_animation import animate
 
 USER = "SamuelIVX"
 JOINED_YEAR = 2022
@@ -260,12 +261,13 @@ def info_lines(s):
         loc_line(s)
     ]
 
-def render(mode: str, stats: dict[str, int]) -> str:
+def render(mode: str, stats: dict[str, int], animated: bool = True) -> str:
     """Return a themed SVG with softly faded art left and aligned information right.
 
     Args:
         mode: A key in PALETTES.
         stats: Counts consumed by info_lines.
+        animated: Include ASCII aura motion; false for reduced-motion assets.
     Returns:
         The standalone SVG markup, ready to embed as a README image.
     """
@@ -334,7 +336,8 @@ def render(mode: str, stats: dict[str, int]) -> str:
         out.append(f'<text y="{first_y + i * line_height}" '
                    f'xml:space="preserve">{spans}</text>')
     out.extend(['</g>', '</svg>'])
-    return "\n".join(out)
+    svg = "\n".join(out)
+    return animate(svg, mode) if animated else svg
 
 if __name__ == "__main__":
     stats = fetch_stats()
@@ -342,4 +345,6 @@ if __name__ == "__main__":
     for mode in PALETTES:
         with open(f"{mode}_mode.svg", "w", encoding="utf-8") as f:
             f.write(render(mode, stats))
-    print("wrote dark_mode.svg, light_mode.svg")
+        with open(f"{mode}_static_mode.svg", "w", encoding="utf-8") as f:
+            f.write(render(mode, stats, animated=False))
+    print("wrote animated and static profile SVGs for both themes")

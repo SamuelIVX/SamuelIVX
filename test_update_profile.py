@@ -1,6 +1,7 @@
 """Regression checks for the profile SVG's columns and value alignment."""
 
 import unittest
+from pathlib import Path
 import xml.etree.ElementTree as ET
 
 import update_profile as profile
@@ -90,6 +91,42 @@ class ProfileLayoutTests(unittest.TestCase):
         for row in profile.info_lines(stats):
             if row:
                 self.assertEqual(len("".join(text for text, _ in row)), profile.W)
+
+    def test_animation_and_static_fallback(self):
+        """Keep stats and source art intact while shimmer rises through the top."""
+        stats = dict.fromkeys(("followers", "repos", "contributed", "stars", "commits",
+                              "loc_add", "loc_del", "loc"), 1234)
+        ns = {"s": "http://www.w3.org/2000/svg"}
+        for mode in profile.PALETTES:
+            with self.subTest(mode=mode):
+                static = ET.fromstring(profile.render(mode, stats, animated=False))
+                moving = ET.fromstring(profile.render(mode, stats))
+                self.assertEqual(ET.tostring(static.find("s:g[@id='info']", ns)),
+                                 ET.tostring(moving.find("s:g[@id='info']", ns)))
+                moving_art = moving.find(".//s:g[@id='art']", ns)
+                top = moving_art[0].findall("s:tspan[@class='existing-aura']", ns)
+                self.assertTrue(top)
+                for row in moving_art:
+                    cells = row.findall("s:tspan[@class='existing-aura']", ns)
+                    self.assertLessEqual(len({cell.get('style').split('animation-delay:')[1]
+                                              for cell in cells}), 1)
+                    for cell in cells:
+                        del cell.attrib['class']
+                        del cell.attrib['style']
+                self.assertEqual(ET.tostring(static.find(".//s:g[@id='art']", ns)),
+                                 ET.tostring(moving_art))
+                aura = moving.find(".//s:g[@id='aura']", ns)
+                self.assertIsNotNone(aura)
+                self.assertIsNone(static.find(".//s:g[@id='aura']", ns))
+                self.assertFalse(moving.findall('.//s:script', ns))
+                self.assertFalse(aura.findall('.//s:path', ns))
+                self.assertIsNone(moving.find(".//s:g[@id='surrounding-aura']", ns))
+                css = moving.find('s:defs/s:style', ns).text
+                self.assertIn('prefers-reduced-motion: reduce', css)
+                self.assertIn('.existing-aura { animation: none !important; }', css)
+        readme = Path(__file__).with_name('README.md').read_text()
+        self.assertLess(readme.index('light_static_mode.svg'), readme.index('light_mode.svg'))
+        self.assertLess(readme.index('dark_static_mode.svg'), readme.index('dark_mode.svg'))
 
 
 if __name__ == "__main__":
