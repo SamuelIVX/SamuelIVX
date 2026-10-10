@@ -57,7 +57,7 @@ import html
 
 USER = "SamuelIVX"
 JOINED_YEAR = 2022
-W = 68
+W = 64
 
 TOKEN = os.environ.get("GITHUB_TOKEN") or os.environ.get("ACCESS_TOKEN") or ""
 PRIV_TOKEN = os.environ.get("ACCESS_TOKEN") or TOKEN
@@ -186,7 +186,7 @@ def kv(key, val, width=W):
     return [(f"{key}: ", "k"), (dots + " ", "d"), (str(val), "v")]
 
 def kv2(k1, v1, k2, v2):
-    left = kv(k1, v1, 28)
+    left = kv(k1, v1, 26)
     return left + [(" | ", "d")] + kv(k2, v2, 23)
 
 def rule(title=""):
@@ -224,9 +224,9 @@ def info_lines(s):
 def render(mode, stats):
     p = PALETTES[mode]
     out = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540" '
+        '<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540" '
         f'font-family="Consolas, Menlo, monospace" font-size="13px">',
-        f'<rect x="0.5" y="0.5" width="879" height="539" rx="10" fill="{p["bg"]}" stroke="{p["border"]}"/>',
+        f'<rect x="0.5" y="0.5" width="899" height="539" rx="10" fill="{p["bg"]}" stroke="{p["border"]}"/>',
     ]
     for i, line in enumerate(ART_LINES):
         out.append(f'<text x="25" y="{55 + i * 9}" font-size="8px" xml:space="preserve">{line}</text>')
@@ -234,7 +234,7 @@ def render(mode, stats):
         if not segs:
             continue
         spans = "".join(f'<tspan fill="{p[c]}">{html.escape(t)}</tspan>' for t, c in segs)
-        out.append(f'<text x="320" y="{50 + i * 21}" xml:space="preserve">{spans}</text>')
+        out.append(f'<text x="380" y="{50 + i * 21}" xml:space="preserve">{spans}</text>')
     out.append("</svg>")
     return "\n".join(out)
 
