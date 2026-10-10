@@ -212,7 +212,7 @@ def info_lines(s):
         rule("Contact"),
         kv("Portfolio", "samuelivx.github.io"),
         kv("LinkedIn", "in/samuelhb"),
-        kv("Devpost", "devpost.com/samuelhernandezcs"),
+        kv("Devpost", "devpost.com/SamuelIVX"),
         [],
         rule("GitHub Stats"),
         kv2("Repos", f"{s['repos']} {{Contributed: {s['contributed']}}}", "Stars", n(s["stars"])),
