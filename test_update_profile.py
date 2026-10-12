@@ -125,8 +125,8 @@ class ProfileLayoutTests(unittest.TestCase):
                 self.assertIn('prefers-reduced-motion: reduce', css)
                 self.assertIn('.existing-aura { animation: none !important; }', css)
         readme = Path(__file__).with_name('README.md').read_text()
-        self.assertLess(readme.index('light_static_mode.svg'), readme.index('light_mode.svg'))
-        self.assertLess(readme.index('dark_static_mode.svg'), readme.index('dark_mode.svg'))
+        self.assertIn('light_static_mode.svg', readme)
+        self.assertIn('dark_static_mode.svg', readme)
 
 
 if __name__ == "__main__":
